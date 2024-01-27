@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { SignupValidation } from "@/lib/validation";
 import Loader from "@/components/shared/loader";
+import { createUserAccount } from "@/lib/appwrite/api";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -35,7 +36,10 @@ function SignupForm() {
     },
   });
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
-    // const newUser = await createUserAccount(values);
+    const newUser = await createUserAccount(values);
+    
+    console.log(newUser);
+  
   }
 
   return (
